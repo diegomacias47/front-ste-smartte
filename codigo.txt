@@ -1,0 +1,4 @@
+      <div>
+        {loading && <p>Cargando...</p>}
+        {data?.map(user => (<p key={user.id}>{user.name}</p>))}
+      </div>

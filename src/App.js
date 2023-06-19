@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { useFetch } from './fetch/useFetch';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from './pages/home/Home';
 import './App.css';
+import './bootstrap-utilities.min.css';
+import './bootstrap-grid.min.css';
+import { ThemeProvider } from '@emotion/react';
+import { theme }  from './Theme';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  const { data, loading, error } = useFetch('https://api-ste.smartte.com.mx/controller/user.php');
+
+  return (    
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
