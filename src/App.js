@@ -1,6 +1,7 @@
 import { useFetch } from './fetch/useFetch';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from './pages/home/Home';
+import { ReserveForms } from './pages/reserve-form/ReserveForms';
 import { School } from './pages/school/School';
 import './App.css';
 import './bootstrap-utilities.min.css';
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/schools" element={<School></School>}></Route>
+          <Route path="/reserve-forms" element={<ReserveForms></ReserveForms>}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
