@@ -7,8 +7,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { useFetch } from "../../fetch/useFetch";
 
 export const ReserveForms = () => {
+    const {data, loading, error} = useFetch('https://api-ste.smartte.com.mx/apiv2/schools');
 
     return (
         <div> 
@@ -119,9 +121,12 @@ export const ReserveForms = () => {
                     id="demo-simple-select"
                     label="Institucion"
                     >
-                    <MenuItem value={10}>Preparatoria 9</MenuItem>
-                    <MenuItem value={10}>Preparatoria 15</MenuItem>
-                    <MenuItem value={10}>Preparatoria 22</MenuItem>
+                    
+                    {
+                        data?.map((element, index) => (
+                            <MenuItem value={element.id_school}>{element.name}</MenuItem>
+                        ))
+                    }
                     </Select>
                     </FormControl>
                 </div>
@@ -136,7 +141,7 @@ export const ReserveForms = () => {
                         <Button variant="outlined">Regresar</Button>
                     </div>
                     <div className="col-4 pb-4"></div>
-                    <div className="col-4 pb-4">
+                    <div className="col-4 text-end pb-4">
                         <Button variant="contained">Enviar</Button>
                     </div>
 

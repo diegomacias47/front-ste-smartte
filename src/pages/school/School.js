@@ -15,15 +15,7 @@ export const School = () => {
                     { data?.map((institution, index) => (<div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 px-3">
                         <Institution institution={institution} />
                     </div>))}
-                    { data?.map((institution, index) => (<div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 px-3">
-                        <Institution institution={institution} />
-                    </div>))}
-                    { data?.map((institution, index) => (<div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 px-3">
-                        <Institution institution={institution} />
-                    </div>))}
-                    { data?.map((institution, index) => (<div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 px-3">
-                        <Institution institution={institution} />
-                    </div>))}
+                    
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from './pages/home/Home';
 import { ReserveForms } from './pages/reserve-form/ReserveForms';
 import { School } from './pages/school/School';
+import { Login } from './pages/login/Login';
 import './App.css';
 import './bootstrap-utilities.min.css';
 import './bootstrap-grid.min.css';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/schools" element={<School></School>}></Route>
           <Route path="/reserve-forms" element={<ReserveForms></ReserveForms>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
