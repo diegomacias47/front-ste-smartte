@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bungee&family=Poppins:wght@200;400&display=swap');
 
+:root {
+  --shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,5 +60,9 @@ code {
 
 .separator {
   height: 60px;
+}
+
+.primary-box-shadow {
+  box-shadow: var(--shadow);
 }
 
