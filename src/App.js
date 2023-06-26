@@ -4,6 +4,7 @@ import { Home } from './pages/home/Home';
 import { ReserveForms } from './pages/reserve-form/ReserveForms';
 import { School } from './pages/school/School';
 import { Login } from './pages/login/Login';
+import { Routelist } from './pages/routelist/Routelist';
 import './App.css';
 import './bootstrap-utilities.min.css';
 import './bootstrap-grid.min.css';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/schools" element={<School></School>}></Route>
           <Route path="/reserve-forms" element={<ReserveForms></ReserveForms>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/route-list" element={<Routelist></Routelist>}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
