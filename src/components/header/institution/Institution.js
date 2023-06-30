@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, Typography, CardActions, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const Institution = (props) => {
     const imageHost = 'https://api-ste.smartte.com.mx/';
@@ -15,7 +16,7 @@ export const Institution = (props) => {
                 </CardContent>
                 <CardActions>
                     <Button className='text-capitalize fw-bolder' variant="outlined" size="small" color='primary'>¡Reserva aquí!</Button>
-                    <Button className='text-capitalize fw-bolder' variant="outlined" size="small" color='primary'>¡Ver Rutas!</Button>
+                    <Button component={Link} to={'/my-routes?id=' + props.institution.id_school}  className='text-capitalize fw-bolder' variant="outlined" size="small" color='primary'>¡Ver Rutas!</Button>
                 </CardActions>
             </Card>
         </Box>
