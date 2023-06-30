@@ -9,9 +9,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-
+import { useSearchParams } from "react-router-dom";
+import { useFetch } from "../../fetch/useFetch";
+import { SchoolRoutes } from "../../components/school-routes/SchoolRoutes";
 
 export const MyRoutes = () => {
+    let [searchParams, setSearchParams] = useSearchParams();
+    const {data, loading, error} = useFetch('https://api-ste.smartte.com.mx/apiv2/route?id=' + searchParams.get('id'));
+    
     return(
         <div>
             <Header></Header>
@@ -22,54 +27,14 @@ export const MyRoutes = () => {
                     </div>
                     <div className="col-6 pt-5 ps-5">
                         <h1>Prepa 15 Madero</h1>
-                    </div>
-                    
-                    
+                    </div>    
                 </div>
+               
                 <div className="row">
-                    <div className="col-12 col-md-4 pt-3 pb-5">
-                        <h2 className="pb-3 pt-3 text-center">Ruta Ruiz Cortines</h2>
-                        <div className="text-center">
-                            <img src={Ruta15Cumbres} alt="rutaruiz" data-bs-toggle="modal" data-bs-target="#imageexample"style={{width: '350px', height: '280px'}} id="ruta1"></img>
-                        </div>
-                       
-                        <div className="text-center pt-2">
-                           
-                            <Button variant="outlined" size="large">
-                                        Reserva aqui
-                            </Button>
-                        </div>
-                    </div>
-                    
-                    <div className="col-12 col-md-4 pt-3 pb-5">
-                        <h2 className="pb-3 ps-5 pt-3 text-center">Ruta Linda Vista</h2>
-                        <div className="text center">
-                            <img src={Ruta15LindaVista} style={{width: '350px', height: '280px'}}></img>
-                        </div>
-                        <div className="text-center pt-2">
-                            <Button variant="outlined" size="large">
-                                        Reserva aqui
-                            </Button>
-                        </div>
-                    </div>
-
-                    <div className="col-12 col-md-4 pt-3 pb-5">
-                        <h2 className="pb-3 ps-5 pt-3 text-center">Ruta Acapulco</h2>
-                        <div>
-                            <img src={Ruta15Acapulco} style={{width: '350px', height: '280px'}}></img>
-                        </div>
-                        <div className="text-center pt-2">
-                            <Button variant="outlined" size="large">
-                                        Reserva aqui
-                            </Button>
-                        </div>
-                    </div>
-
+                    {
+                        data?.map((value, index) => (<div key={index} className="col-12 col-md-4 pt-3 pb-5"> <SchoolRoutes route={value}></SchoolRoutes> </div>) )
+                    }
                 </div>
-
-
-
-
             </div>
         </div>
     )
