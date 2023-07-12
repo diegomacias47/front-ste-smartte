@@ -1,9 +1,6 @@
 import { Header } from '../../components/header/Header';
-import  banner  from '../../assets/banner.png';
 import './Home.css';
-import { Button, Box } from '@mui/material';
-import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-import EventNoteIcon from '@mui/icons-material/EventNote';
+import {Box } from '@mui/material';
 import BannerBus from '../../assets/banner_bus.jpeg';
 import InstallMobileIcon from '@mui/icons-material/InstallMobile';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -12,30 +9,13 @@ import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
 import Jorge from '../../assets/jorge.png';
 import Karla from '../../assets/karla.jpeg';
 import Karen from '../../assets/karen.jpeg';
+import { Banner } from '../../components/Banner';
 
 
 export function Home() {
     return(
         <main>
-            <Header></Header>
-            <Box className='banner-content position-relative' sx={{boxShadow: 1}}>
-                <div className='w-100 banner-image-content py-3'>
-                    <img className='banner-image float-end' src={banner}/>
-                </div>            
-                <div className='banner-description position-absolute d-flex align-items-center justify-content-center flex-column'>
-                    <div className='w-75 text-center text-white'>
-                        <h1 className='fw-bolder'>¡Somos la opción definitiva para el transporte estudiantil!</h1>
-                        <p className='mt-2'>Proveemos un servicio de transporte enfocado a estudiantes de la Universidad Autónoma de Nuevo León</p>
-                    </div>
-                    <Box>
-                        <Button className='fw-bolder text-capitalize' sx={{m:3}} variant='contained' size='large' color="secondary" startIcon={<ConnectWithoutContactIcon />}>¡Contactanos!</Button>
-                        <Button className='fw-bolder text-capitalize' sx={{m:3}} variant='contained' size='large' color="secondary" startIcon={<EventNoteIcon />}>¡Haz tu reserva!</Button>
-                    </Box>
-                </div>
-            </Box>
-
             <div className='separator'></div>
-
             <div className='container pb-5'>
                 <div className='row'>
                     <div className='col-12 col-md-6 d-flex align-items-center'>
@@ -55,8 +35,8 @@ export function Home() {
 
                 <div className='separator'></div>
 
-                <div className='services'>
-                    <h1 className='text-end mb-3'>¿Qué nos hace especiales?</h1>
+                <div>
+                    <h1 className='text-center text-md-end mb-3'>¿Qué nos hace especiales?</h1>
                     <div className='row'>
                         <Box className='col-6 col-md-3 p-2'>
                             <Box className='p-3 h-100' sx={{boxShadow: 3, borderRadius: 5}}>
@@ -83,7 +63,7 @@ export function Home() {
                             </Box>
                         </Box>
                         <Box className='col-6 col-md-3 p-2'>
-                            <Box className='p-3'  sx={{boxShadow: 3, borderRadius: 5}}>
+                            <Box className='p-3 h-100'  sx={{boxShadow: 3, borderRadius: 5}}>
                                 <div className='text-center py-3'>
                                     <AccessAlarmsIcon style={{fontSize: '60px'}} color='primary' />
                                 </div>
@@ -96,7 +76,7 @@ export function Home() {
                 <div className='separator'></div>
 
                 <div className='testimonials'>
-                    <div className='pb-3 px-2'>
+                    <div className='pb-3 px-2 text-center text-md-start'>
                         <h1>Testimonios</h1>
                         <p>
                             Lo que nuestros estudiantes opinan.
@@ -108,7 +88,7 @@ export function Home() {
                     </div>
 
                     <div className='row'>
-                        <div className='col-4'>
+                        <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0'>
                             <Box className="p-2 m-1" sx={{minWidth: '250px', boxShadow: 3, borderRadius: 2}}>
                                 <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
                                     <img src={Jorge} style={{borderRadius: '50%', height: '55px', width: '60px'}}/>
@@ -122,7 +102,7 @@ export function Home() {
                                 </div>
                             </Box>                              
                         </div>
-                        <div className='col-4'>
+                        <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0'>
                             <Box className="p-2 m-1" sx={{minWidth: '250px', boxShadow: 3, borderRadius: 2}}>
                                 <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
                                     <img src={Karla} style={{borderRadius: '50%', height: '55px', width: '60px'}}/>
@@ -136,7 +116,7 @@ export function Home() {
                                 </div>
                             </Box>                              
                         </div>
-                        <div className='col-4'>
+                        <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0'>
                             <Box className="p-2 m-1" sx={{minWidth: '250px', boxShadow: 3, borderRadius: 2}}>
                                 <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
                                     <img src={Karen} style={{borderRadius: '50%', height: '55px', width: '60px'}}/>

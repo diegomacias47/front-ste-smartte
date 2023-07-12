@@ -95,7 +95,7 @@ const validateForm = (values) => {
 
 
 }
-export const ReserveForms = () => {
+export const Reserve = () => {
     const { data, loading, error } = useFetch('https://api-ste.smartte.com.mx/V3/schools');
     //const allCities = useFetch('https://api-ste.smartte.com.mx/V3/schools');
     const [routes, setRoutes] = useState(null);
@@ -146,7 +146,6 @@ export const ReserveForms = () => {
 
     return (
         <div>
-            <Header></Header>
             <div className="container pt-3 px-md-5" >                
                 <h1 className="pb-3">¡Reserva tu Ruta!</h1>
 

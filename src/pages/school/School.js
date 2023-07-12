@@ -7,7 +7,6 @@ export const School = () => {
     const {data, loading, error} = useFetch('https://api-ste.smartte.com.mx/apiv2/schools');
     return (
         <div>
-            <Header></Header>
             <div className="container py-4 px-md-5">
                 <h1 className="text-center">¡Nuestras escuelas participantes!</h1>
                 {loading && <div className="text-center pt-5"><CircularProgress color="primary" /></div>}

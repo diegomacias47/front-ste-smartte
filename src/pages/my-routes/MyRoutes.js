@@ -19,7 +19,6 @@ export const MyRoutes = () => {
     
     return(
         <div>
-            <Header></Header>
             <div className="container pt-3 px-md-5">
                 <div className="row pb-3">
                     <div className="col-4">
