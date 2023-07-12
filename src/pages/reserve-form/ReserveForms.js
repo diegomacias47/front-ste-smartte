@@ -12,6 +12,7 @@ import { CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "../../fetch/useForm";
 import FormHelperText from "@mui/material/FormHelperText";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
     'tutor_name': '',
@@ -26,7 +27,7 @@ const initialValues = {
     'period': '',
     'type_study': '',
     'shift': '',
-    'route_id': 2,
+    'route_id': '',
     'interested': true,
     'reg_date': '2023-06-03'
 }
@@ -95,30 +96,37 @@ const validateForm = (values) => {
 
 }
 export const ReserveForms = () => {
-    const { data, loading, error } = useFetch('https://api-ste.smartte.com.mx/apiv2/schools');
+    const { data, loading, error } = useFetch('https://api-ste.smartte.com.mx/V3/schools');
+    //const allCities = useFetch('https://api-ste.smartte.com.mx/V3/schools');
+    const [routes, setRoutes] = useState(null);
+    const navigate = useNavigate();
     
     const [errors, setErrors] = useState({});
     const [reserveData, setReserveData] = useState(initialValues);
     
     const handleChange = event => {
-        console.log(event)
-        const data = {... reserveData};
-        //console.log(event.name);
+        const data = {...reserveData};
         data[event.target.name] = event.target.value;
 
         setReserveData(data);
-        console.log(data);
+
+        if (event.target.name == 'school_id') {
+            fetch('https://api-ste.smartte.com.mx/apiv2/route?id=' + event.target.value)
+            .then(json => json.json())
+            .then(data => {
+                setRoutes(data);
+            })
+            .catch(err => console.log(err));
+        }
     };
 
     const send = (event) => {
         event.preventDefault();
 
         const errorResult = validateForm(reserveData);
-        if (Object.keys(errorResult)) {
+        if (Object.keys(errorResult).length > 0) {
             return setErrors(errorResult);
         }
-
-        console.log("Mensaje de prueba");
 
         let fd = new FormData();
         fd.append('tutor_name', 'diego');
@@ -129,8 +137,11 @@ export const ReserveForms = () => {
             body: Object.entries(reserveData).map(([k,v])=>{return k+'='+v}).join('&')
         }).
         then(json => json.json()).
-        then(data => console.log(data)).
-        catch(err => console.log(err));
+        then(data => {
+            alert('Formulario enviado correctamente')
+            navigate('/');
+        })
+        .catch(err => console.log(err));
     }
 
     return (
@@ -199,14 +210,20 @@ export const ReserveForms = () => {
                                 name="city_id"
                                 value={reserveData.city_id}
                             >
-                                <MenuItem value={1}>Monterrey</MenuItem>
-                                <MenuItem value={2}>Guadalupe</MenuItem>
-                                <MenuItem value={3}>Garcia</MenuItem>
-                                <MenuItem value={4}>Apodaca</MenuItem>
-                                <MenuItem value={5}>Escobedo</MenuItem>
-                                <MenuItem value={6}>San Nicolas</MenuItem>
-                                <MenuItem value={7}>Santa Catarina</MenuItem>
-                                <MenuItem value={8}>Juarez</MenuItem>
+                                <MenuItem value={1}>MONTERREY</MenuItem>
+                                <MenuItem value={2}>APODACA</MenuItem>
+                                <MenuItem value={3}>GUADALUPE</MenuItem>
+                                <MenuItem value={4}>GENERAL ESCOBEDO</MenuItem>
+                                <MenuItem value={5}>JUAREZ</MenuItem>
+                                <MenuItem value={6}>SAN NICOLÁS DE LOS GARZA</MenuItem>
+                                <MenuItem value={7}>GARCÍA</MenuItem>
+                                <MenuItem value={8}>SANTA CATARINA</MenuItem>
+                                <MenuItem value={9}>PESQUERÍA</MenuItem>
+                                <MenuItem value={10}>SAN PEDRO GARZA GARCÍA</MenuItem>
+                                <MenuItem value={11}>CADEREYTA JIMENEZ</MenuItem>
+                                <MenuItem value={12}>SALINAS VICTORIA</MenuItem>
+                                <MenuItem value={13}>SANTIAGO</MenuItem>
+                                <MenuItem value={13}>OTRO</MenuItem>
 
                             </Select>
                             <FormHelperText>{errors.city_id}</FormHelperText>
@@ -244,9 +261,9 @@ export const ReserveForms = () => {
                                 name="shift"
                                 value={reserveData.shift}
                             >
-                                <MenuItem value={1}>Matutino</MenuItem>
-                                <MenuItem value={2}>Vespertino</MenuItem>
-                                <MenuItem value={3}>Nocturno</MenuItem>
+                                <MenuItem value={'MATUTINO'}>Matutino</MenuItem>
+                                <MenuItem value={'VESPERTINO'}>Vespertino</MenuItem>
+                                <MenuItem value={'NOCTURNO'}>Nocturno</MenuItem>
 
                             </Select>
                             <FormHelperText>{errors.shift}</FormHelperText>
@@ -263,11 +280,11 @@ export const ReserveForms = () => {
                                 name="type_study"
                                 value={reserveData.type_study}
                             >
-                                <MenuItem value={1}>Preparatoria Bilingue</MenuItem>
-                                <MenuItem value={2}>Preparatoria Internacional</MenuItem>
-                                <MenuItem value={3}>Preparatoria Progresivo</MenuItem>
-                                <MenuItem value={4}>Preparatoria Normal</MenuItem>
-                                <MenuItem value={5}>Facultad</MenuItem>
+                                <MenuItem value={1}>BACHILLERATO GENERAL</MenuItem>
+                                <MenuItem value={2}>BACHILLERATO BILINGUE</MenuItem>
+                                <MenuItem value={3}>BACHILLERATO INTERNACIONAL</MenuItem>
+                                <MenuItem value={4}>BACHILLERATO PROGRESIVO</MenuItem>
+                                <MenuItem value={5}>FACULTAD</MenuItem>
 
                             </Select>
                            <FormHelperText>{errors.type_study}</FormHelperText>
@@ -294,19 +311,45 @@ export const ReserveForms = () => {
                             <FormHelperText>{errors.school_id}</FormHelperText>
                         </FormControl>
                     </div>
+                    {
+                        routes &&
+                        <div className="col-md-6 pb-2">
+                            <Link className="mb-4" to={'/my-routes?id=' + reserveData.school_id}>¿No conoce nuestras rutas? Vea nuestro catalogo de rutas de esta escuela.</Link>
+                            <FormControl fullWidth error = {errors.school_id !== undefined}>
+                                <InputLabel id="demo-simple-select-label">Ruta</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="route_id"
+                                    label="Ruta"  
+                                    onChange={handleChange}
+                                    value={reserveData.route_id}          
+                                    name="route_id"
+                                >
+                                    {                                    
+                                        routes?.map((element, index) => (
+                                            <MenuItem key={index} value={ element.id_route}>{element.name}</MenuItem>
+                                        ))
+                                    }
+                                </Select>
+                                <FormHelperText>{errors.school_id}</FormHelperText>
+                            </FormControl>
+                        </div>
+                    }
                 </div>
 
-                <h3 className="pb-2">Si ya conoce nuestras rutas, favor de anotarla aqui abajo</h3>
+                {
+                   /*             <h3 className="pb-2">Si ya conoce nuestras rutas, favor de anotarla aqui abajo</h3>
                 <div className="col-md-6 pb-5">
                     <TextField className="w-100" id="outlined-basic" label="Ruta" variant="outlined" onChange={handleChange}/>
-                </div>
+                </div>*/
+                }
                 <div className="row">
                     <div className="col-4 pb-4">
-                        <Button variant="outlined">Regresar</Button>
+                        {/*<Button variant="outlined">Regresar</Button>*/}
                     </div>
                     <div className="col-4 pb-4"></div>
                     <div className="col-4 text-end pb-4">
-                        <Button variant="contained" onClick={send}>Enviar</Button>
+                        <Button variant="contained" onClick={send} disabled={!reserveData.route_id}>Enviar</Button>
                     </div>
 
                 </div>

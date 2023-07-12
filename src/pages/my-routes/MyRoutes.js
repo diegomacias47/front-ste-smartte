@@ -23,10 +23,10 @@ export const MyRoutes = () => {
             <div className="container pt-3 px-md-5">
                 <div className="row pb-3">
                     <div className="col-4">
-                    <img src={logoprepa15} style={{width: '100px', height: '100px'}}></img>
+                        {/*<img src={logoprepa15} style={{width: '100px', height: '100px'}}></img>*/}
                     </div>
                     <div className="col-6 pt-5 ps-5">
-                        <h1>Prepa 15 Madero</h1>
+                        {/*<h1>Prepa 15 Madero</h1>*/}
                     </div>    
                 </div>
                
