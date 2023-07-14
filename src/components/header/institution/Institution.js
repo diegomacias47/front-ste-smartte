@@ -7,7 +7,7 @@ export const Institution = (props) => {
         <Box className="pt-3">
             <Card sx={{}}>
                 <Box sx={{textAlign: 'center'}}>
-                    <img style={{height: 190, width: 190, textAlign: 'center'}} src={imageHost + props.institution.url_logo}/>
+                    <img style={{height: 190, width: 190, textAlign: 'center'}} src={imageHost + props.institution.url_logo} alt="img_institution"/>
                 </Box>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -15,7 +15,7 @@ export const Institution = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button className='text-capitalize fw-bolder' variant="outlined" size="small" color='primary'>¡Reserva aquí!</Button>
+                    {/*<Button className='text-capitalize fw-bolder' variant="outlined" size="small" color='primary'>¡Reserva aquí!</Button>*/}
                     <Button component={Link} to={'/my-routes?id=' + props.institution.id_school}  className='text-capitalize fw-bolder' variant="outlined" size="small" color='primary'>¡Ver Rutas!</Button>
                 </CardActions>
             </Card>

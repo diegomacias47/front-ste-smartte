@@ -15,7 +15,7 @@ export const Header = () => {
       <div className='container-fluid px-0 px-md-2 d-flex'>
         <div className='col-6'>
           <div className='d-flex align-items-center justify-content-center'>
-              <img className='logo me-3' src={SteLogo}/>
+              <img className='logo me-3' src={SteLogo} alt='ste-logo'/>
               <label className='size-22 fw-bold text-whites fst-italic d-none d-lg-inline'>STE Transporte Estudiantil</label>
             </div>
         </div>
@@ -23,6 +23,7 @@ export const Header = () => {
           <button className='text-capitalize d-none d-lg-inline-flex btn-custom btn-custom-md btn-custom-text' onClick={() => goTo('/')}>Inicio</button>
           <button className='text-capitalize d-none d-lg-inline-flex btn-custom btn-custom-md btn-custom-text' onClick={() => goTo('/schools')}>Escuelas</button>
           <button className='text-capitalize d-none d-lg-inline-flex btn-custom btn-custom-md btn-custom-text' onClick={() => goTo('/reservation')}>Reservar</button>
+          <button className='text-capitalize d-none d-lg-inline-flex btn-custom btn-custom-md btn-custom-text' onClick={() => goTo('/payment')}>Pagar</button>
           <button className='text-capitalize d-none d-lg-inline-flex btn-custom btn-custom-md btn-custom-primary' onClick={() => goTo('/login')}>Iniciar Sesión</button>
           <div className='d-inline-flex d-lg-none'>
             <STEDrawer></STEDrawer>

@@ -20,18 +20,20 @@ export const MyRoutes = () => {
     return(
         <div>
             <div className="container pt-3 px-md-5">
-                <div className="row pb-3">
-                    <div className="col-4">
-                        {/*<img src={logoprepa15} style={{width: '100px', height: '100px'}}></img>*/}
-                    </div>
-                    <div className="col-6 pt-5 ps-5">
-                        {/*<h1>Prepa 15 Madero</h1>*/}
-                    </div>    
-                </div>
+                {
+                /*<div className="row pb-3">
+                    <div className="col-4">*/
+                        //{/*<img src={logoprepa15} style={{width: '100px', height: '100px'}}></img>*/}
+                    /*</div>
+                    <div className="col-6 pt-5 ps-5">*/
+                        //{/*<h1>Prepa 15 Madero</h1>*/}
+                    /*</div>    
+                </div>*/
+                }
                
                 <div className="row">
                     {
-                        data?.map((value, index) => (<div key={index} className="col-12 col-md-4 pt-3 pb-5"> <SchoolRoutes route={value}></SchoolRoutes> </div>) )
+                        data?.map((value, index) => (<div key={index} className="col-12 col-md-4 pt-5 pb-5"> <SchoolRoutes route={value}></SchoolRoutes> </div>) )
                     }
                 </div>
             </div>

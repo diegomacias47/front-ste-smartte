@@ -7,6 +7,7 @@ import { School } from "../pages/school/School";
 import { MyRoutes } from "../pages/my-routes/MyRoutes";
 import { Reserve } from "../pages/reserve-form/Reserve";
 import { Account } from "../pages/account/Account";
+import { Payment } from "../pages/payment/Payment";
 
 export const RoutesIndex = () => {
     return (
@@ -17,6 +18,7 @@ export const RoutesIndex = () => {
                 <Route path='/routes' element={<MyRoutes />}></Route>
                 <Route path='/login' element={<Login />} ></Route>
                 <Route path='/reservation' element={<Reserve />} ></Route>
+                <Route path='/payment' element={<Payment />} ></Route>
             </Route>
             <Route element={<ProtectedRoute />}>
                 <Route path='/account' element={<Account />} ></Route>

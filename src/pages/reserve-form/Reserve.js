@@ -154,20 +154,20 @@ export const Reserve = () => {
                 <div className="row pb-3">
                     <div className="col-12 col-md-6 pb-2">
                         <FormControl error className="w-100">
-                            <TextField className="w-100" id="tutor_name" name="tutor_name" label="Nombre" variant="outlined" onChange={handleChange}/>
+                            <TextField className="w-100" id="tutor_name" name="tutor_name" label="Nombre" variant="outlined" onChange={handleChange} size="small"/>
                             <FormHelperText>{errors.tutor_name}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="col-12 col-md-6 pb-2">
                         <FormControl error className="w-100">
-                        <TextField className="w-100" id="phone_name" name="tutor_phone" label="Telefono" variant="outlined" onChange={handleChange}/>
-                        <FormHelperText>{errors.tutor_phone}</FormHelperText>
+                            <TextField className="w-100" id="phone_name" name="tutor_phone" label="Telefono" variant="outlined" onChange={handleChange} size="small"/>
+                            <FormHelperText>{errors.tutor_phone}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="col-12 col-md-6 pb-2">
                         <FormControl error className="w-100">
-                        <TextField className="w-100" id="tutor_email" name="tutor_email" label="Correo Electronico" variant="outlined" onChange={handleChange}/>
-                        <FormHelperText>{errors.tutor_email}</FormHelperText>
+                            <TextField className="w-100" id="tutor_email" name="tutor_email" label="Correo Electronico" variant="outlined" onChange={handleChange} size="small"/>
+                            <FormHelperText>{errors.tutor_email}</FormHelperText>
                         </FormControl>
                     </div>
                 </div>
@@ -175,30 +175,30 @@ export const Reserve = () => {
                 <div className="row pb-3">
                     <div className="col-6 pb-2">
                         <FormControl error className="w-100">
-                        <TextField className="w-100" id="street" label="Calle" name="street" variant="outlined" onChange={handleChange}/>
-                        <FormHelperText>{errors.street}</FormHelperText>
+                            <TextField className="w-100" id="street" label="Calle" name="street" variant="outlined" onChange={handleChange} size="small"/>
+                            <FormHelperText>{errors.street}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="col-6 pb-2">
                         <FormControl error className="w-100">
-                        <TextField className="w-100" id="house_number" name="house_number" label="Numero" variant="outlined" onChange={handleChange}/>
-                        <FormHelperText>{errors.house_number}</FormHelperText>
+                            <TextField className="w-100" id="house_number" name="house_number" label="Numero" variant="outlined" onChange={handleChange} size="small"/>
+                            <FormHelperText>{errors.house_number}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="col-6 pb-2">
                         <FormControl error className="w-100">
-                        <TextField className="w-100" id="suburb" name="suburb" label="Colonia" variant="outlined" onChange={handleChange}/>
-                        <FormHelperText>{errors.suburb}</FormHelperText>
+                            <TextField className="w-100" id="suburb" name="suburb" label="Colonia" variant="outlined" onChange={handleChange} size="small"/>
+                            <FormHelperText>{errors.suburb}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="col-6 pb-2">
                         <FormControl error className="w-100">
-                        <TextField className="w-100" id="zip_code" name="zip_code" label="Codigo Postal" variant="outlined" onChange={handleChange}/>
-                        <FormHelperText>{errors.zip_code}</FormHelperText>
+                            <TextField className="w-100" id="zip_code" name="zip_code" label="Codigo Postal" variant="outlined" onChange={handleChange} size="small"/>
+                            <FormHelperText>{errors.zip_code}</FormHelperText>
                         </FormControl>
                     </div>
                     <div className="col-md-6 pb-3">
-                        <FormControl fullWidth error = {errors.city_id !== undefined}>
+                        <FormControl fullWidth error = {errors.city_id !== undefined} size="small">
                             <InputLabel id="demo-simple-select-label">Ciudad</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -208,6 +208,7 @@ export const Reserve = () => {
                                 placeholder="Seleccionar"
                                 name="city_id"
                                 value={reserveData.city_id}
+                                size="small"
                             >
                                 <MenuItem value={1}>MONTERREY</MenuItem>
                                 <MenuItem value={2}>APODACA</MenuItem>
@@ -232,7 +233,7 @@ export const Reserve = () => {
                 <h3 className="pb-2">Datos del estudiante</h3>
                 <div className="row pb-3">
                     <div className="col-md-6 pb-2">
-                        <FormControl fullWidth error = {errors.period !== undefined}>
+                        <FormControl fullWidth error = {errors.period !== undefined} size="small">
                             <InputLabel>Ciclo</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -241,7 +242,7 @@ export const Reserve = () => {
                                 onChange={handleChange}
                                 name="period"
                                 value={reserveData.period}
-
+                                size="small"
                             >
                                 <MenuItem value={1}>Ago-Dic 2023</MenuItem>
 
@@ -250,7 +251,7 @@ export const Reserve = () => {
                         </FormControl>
                     </div>
                     <div className="col-md-6 pb-2">
-                        <FormControl fullWidth error = {errors.shift !== undefined} >
+                        <FormControl fullWidth error = {errors.shift !== undefined} size="small">
                             <InputLabel>Turno</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -269,7 +270,7 @@ export const Reserve = () => {
                         </FormControl>
                     </div>
                     <div className="col-md-6 pb-2">
-                        <FormControl fullWidth error = {errors.type_study !== undefined}>
+                        <FormControl fullWidth error = {errors.type_study !== undefined} size="small">
                             <InputLabel id="demo-simple-select-label">Clase</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -290,7 +291,7 @@ export const Reserve = () => {
                         </FormControl>
                     </div>
                     <div className="col-md-6 pb-2">
-                        <FormControl fullWidth error = {errors.school_id !== undefined}>
+                        <FormControl fullWidth error = {errors.school_id !== undefined} size="small">
                             <InputLabel id="demo-simple-select-label">Institucion</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -313,8 +314,7 @@ export const Reserve = () => {
                     {
                         routes &&
                         <div className="col-md-6 pb-2">
-                            <Link className="mb-4" to={'/my-routes?id=' + reserveData.school_id}>¿No conoce nuestras rutas? Vea nuestro catalogo de rutas de esta escuela.</Link>
-                            <FormControl fullWidth error = {errors.school_id !== undefined}>
+                            <FormControl fullWidth error = {errors.school_id !== undefined} size="small">
                                 <InputLabel id="demo-simple-select-label">Ruta</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -332,6 +332,7 @@ export const Reserve = () => {
                                 </Select>
                                 <FormHelperText>{errors.school_id}</FormHelperText>
                             </FormControl>
+                            <Link target="_blank" rel="noopener noreferrer" className="mb-4 btn-custom btn-custom-md btn-custom-text text-decoration-none mt-1 d-inline-block" to={'/routes?id=' + reserveData.school_id}>¿No conoce nuestras rutas? De click aquí.</Link>
                         </div>
                     }
                 </div>
