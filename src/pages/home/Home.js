@@ -12,7 +12,8 @@ import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
 import Jorge from '../../assets/jorge.png';
 import Karla from '../../assets/karla.jpeg';
 import Karen from '../../assets/karen.jpeg';
-
+import Bus1 from '../../assets/bus1.png';
+import Banner1 from '../../assets/banner1.jpeg';
 
 export function Home() {
     return(
@@ -20,7 +21,7 @@ export function Home() {
             <Header></Header>
             <Box className='banner-content position-relative' sx={{boxShadow: 1}}>
                 <div className='w-100 banner-image-content py-3'>
-                    <img className='banner-image float-end' src={banner}/>
+                    <img className='banner-image float-end' src={Bus1}/>
                 </div>            
                 <div className='banner-description position-absolute d-flex align-items-center justify-content-center flex-column'>
                     <div className='w-75 text-center text-white'>
@@ -49,7 +50,7 @@ export function Home() {
                         </div>
                     </div>
                     <div className='col-12 col-md-6'>
-                        <img className='w-100 border rounded' src={BannerBus}/>
+                        <img className='w-100 border rounded' src={Banner1}/>
                     </div>
                 </div>
 
