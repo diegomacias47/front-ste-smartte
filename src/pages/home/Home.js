@@ -1,7 +1,5 @@
-import { Header } from '../../components/header/Header';
-import './Home.css';
+
 import {Box } from '@mui/material';
-import BannerBus from '../../assets/banner_bus.jpeg';
 import InstallMobileIcon from '@mui/icons-material/InstallMobile';
 import SecurityIcon from '@mui/icons-material/Security';
 import SchoolIcon from '@mui/icons-material/School';
@@ -9,7 +7,7 @@ import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
 import Jorge from '../../assets/jorge.png';
 import Karla from '../../assets/karla.jpeg';
 import Karen from '../../assets/karen.jpeg';
-import { Banner } from '../../components/Banner';
+import Banner_A from './../../assets/banner_A.jpg';
 
 
 export function Home() {
@@ -29,7 +27,7 @@ export function Home() {
                         </div>
                     </div>
                     <div className='col-12 col-md-6'>
-                        <img className='w-100 border rounded' src={BannerBus}/>
+                        <img className='w-100 border rounded' src={Banner_A}/>
                     </div>
                 </div>
 

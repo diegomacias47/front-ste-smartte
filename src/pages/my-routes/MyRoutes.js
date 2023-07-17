@@ -15,22 +15,11 @@ import { SchoolRoutes } from "../../components/school-routes/SchoolRoutes";
 
 export const MyRoutes = () => {
     let [searchParams, setSearchParams] = useSearchParams();
-    const {data, loading, error} = useFetch('https://api-ste.smartte.com.mx/apiv2/route?id=' + searchParams.get('id'));
+    const {data, loading, error} = useFetch('routes?id=' + searchParams.get('id'));
     
     return(
         <div>
-            <div className="container pt-3 px-md-5">
-                {
-                /*<div className="row pb-3">
-                    <div className="col-4">*/
-                        //{/*<img src={logoprepa15} style={{width: '100px', height: '100px'}}></img>*/}
-                    /*</div>
-                    <div className="col-6 pt-5 ps-5">*/
-                        //{/*<h1>Prepa 15 Madero</h1>*/}
-                    /*</div>    
-                </div>*/
-                }
-               
+            <div className="container pt-3 px-md-5">               
                 <div className="row">
                     {
                         data?.map((value, index) => (<div key={index} className="col-12 col-md-4 pt-5 pb-5"> <SchoolRoutes route={value}></SchoolRoutes> </div>) )

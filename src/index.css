@@ -19,7 +19,7 @@ html, body {
   margin: 0;
   padding: 0;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 code {
@@ -135,4 +135,14 @@ code {
 
 .btn-custom-text:hover {
   background-color: #5cb5ff7a;
+}
+
+.btn-custom-danger {
+  color: rgb(255, 255, 255);
+  background-color: #ff4444e0;
+}
+
+.btn-custom-danger:hover {
+  color: rgb(247, 247, 247);
+  background-color: #c23838e0;
 }
