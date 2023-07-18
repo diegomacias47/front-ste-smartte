@@ -104,7 +104,7 @@ export const Reserve = () => {
     };
 
     const getRoutesBySchool = (value) => {
-        fetch(APIS.localHost + 'routes?id=' + value)
+        fetch(APIS.ApiV3 + 'routes?id=' + value)
         .then(json => json.json())
         .then(data => {
             setRoutes(data);
@@ -123,7 +123,7 @@ export const Reserve = () => {
         
         const fd = new FormData();
         fd.append('tutor_name', 'diego');
-        fetch(APIS.localHost + 'reserve', {
+        fetch(APIS.ApiV3 + 'reserve', {
             method: 'POST',
             headers: {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"},
             mode: 'cors',

@@ -148,7 +148,7 @@ export const Payment = () => {
     }
 
     const getRoutesBySchool = (id) => {
-        fetch(APIS.localHost + 'routes/affiliate?id=' + id)
+        fetch(APIS.ApiV3 + 'routes/affiliate?id=' + id)
         .then(json => json.json())
         .then(data => {
             setRoutes(data);
@@ -181,7 +181,7 @@ export const Payment = () => {
             fd.append(val, paymentData[val]);
         });
         console.log('HOlaa');
-        fetch(APIS.localHost + 'payments', {
+        fetch(APIS.ApiV3 + 'payments', {
             method: 'POST',
             mode: 'cors',
             body: fd
@@ -215,8 +215,16 @@ export const Payment = () => {
 
     return (
         <div className="px-md-5 pt-3 pb-5">
-            <h1 className="text-start">Formato de pago</h1>
-            <h4>¡Llena el siguiente formulario para poder validar tu pago!</h4>
+            <h1 className="text-start">Pasos para realizar el pago.</h1>
+            <div className="py-3">
+                <p className="size-18 fw-bolder">1.- Hacer el deposito o transferencia del mes correspondiente al siguiente numero de cuenta:</p>
+                <p className="size-16">BANCO BBVA</p>
+                <p className="size-16">No. Tarjeta 4555 1130 1055 1929</p>
+                <p className="size-16">Cuenta 0119334742</p>
+                <p className="size-16">Clabe 012580001193347420</p>
+                <p className="size-16 text-uppercase text-danger" style={{color: ''}}>FAVOR DE INDICAR EN EL CONCEPTO DEL PAGO EL NOMBRE DE SU HIJA O HIJO Y SU MATRÍCULA, SIN ESTOS DATOS SOLICITADOS, NO SE PROCESA EL PAGO</p>
+            </div>
+            <h4>2.- ¡Una vez hecho el deposito, llena el siguiente formulario para poder validar tu pago!</h4>
             <div className="pt-3">
                 <div className="row">
                     <div className="col-12 col-md-6">
@@ -369,7 +377,7 @@ export const Payment = () => {
                             filteredPaymentMethods &&
                             <div className="pt-3">
                                 <FormControl className="w-100" error={formErrors['paymentReference'] != undefined}>
-                                    <TextField value={paymentData.paymentReference} className="w-100" name="paymentReference" label="Ficha de pago (Folio, Referencia, No. Movimiento, etc.)" variant="outlined" size="small" onChange={formHandlerChange}  error={formErrors['paymentReference'] != undefined}/>
+                                    <TextField type="number" value={paymentData.paymentReference} className="w-100" name="paymentReference" label="Ficha de pago (Folio, Referencia, No. Movimiento, etc.)" variant="outlined" size="small" onChange={formHandlerChange}  error={formErrors['paymentReference'] != undefined}/>
                                     <FormHelperText>{formErrors['paymentReference'] != undefined && formErrors['paymentReference']}</FormHelperText>
                                 </FormControl>
                             </div>
@@ -396,6 +404,7 @@ export const Payment = () => {
                         {
                             filteredPaymentMethods &&
                             <div className="pt-3 text-end">
+                                <label className="d-block">*Unicamente se aceptan imagenes.</label>
                                 {
                                     paymentData.payment_file &&
                                     <div className="text-end me-3 mb-3">
@@ -412,6 +421,7 @@ export const Payment = () => {
                                         type="file"
                                         hidden
                                         name="payment_file"
+                                        accept="image/*"
                                         onChange={formHandlerChange}                                        
                                     />
                                 </Button>

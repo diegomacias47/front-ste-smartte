@@ -5,7 +5,7 @@ export const APIS = {
     ApiV3: 'https://api-ste.smartte.com.mx/V3/'
 }
 
-export function useFetch(path, fetchParams = { method: 'GET', mode: 'cors'}, TargetApi = APIS.localHost) {
+export function useFetch(path, fetchParams = { method: 'GET', mode: 'cors'}, TargetApi = APIS.ApiV3) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
