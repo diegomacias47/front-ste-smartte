@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { APIS, useFetch } from "../../fetch/useFetch";
 import { useNavigate } from "react-router-dom";
 
+
 const formValues = {
     'name_student': '',
     'mat_student': '',
@@ -27,11 +28,11 @@ const getSelectInputErrors = (values) => {
     if (!values['name_student']) {
         errors['name_student'] = 'Este campo es obligatorio.'
     }
-    if (!values['mat_student']) {
-        errors['mat_student'] = 'Este campo es obligatorio.'
+    if (!values['mat_student'] ||  isNaN(values["mat_student"])) {
+        errors['mat_student'] = 'Este campo es obligatorio y debe ser numerico.'
     }
     if (!values['phone_student'] || isNaN(values['phone_student'])) {
-        errors['phone_student'] = 'Este campo es obligatorio.'
+        errors['phone_student'] = 'Este campo es obligatorio y debe ser numerico.'
     }
     if (!values['mail_student']) {
         errors['mail_student'] = 'Este campo es obligatorio.'
@@ -42,8 +43,8 @@ const getSelectInputErrors = (values) => {
     if (!values['cp_student']) {
         errors['cp_student'] = 'Este campo es obligatorio.'
     }
-    if (!values['paymentReference']) {
-        errors['paymentReference'] = 'Este campo es obligatorio.'
+    if (!values['paymentReference'] ||  isNaN(values["paymentReference"])) {
+        errors['paymentReference'] = 'Este campo es obligatorio y debe ser numerico.'
     }
     if (!values['pay_type']) {
         errors['pay_type'] = 'Este campo es obligatorio.'
@@ -237,13 +238,13 @@ export const Payment = () => {
                         </div>
                         <div className="pt-3">
                             <FormControl error={formErrors['mat_student'] != undefined} className="w-100">
-                                <TextField type="number" className="w-100" name="mat_student" label="Matricula del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['mat_student'] != undefined}/>
+                                <TextField type="text" className="w-100" inputProps={{ maxLength: 7}} name="mat_student" label="Matricula del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['mat_student'] != undefined}/>
                                 <FormHelperText>{formErrors['mat_student'] != undefined && formErrors['mat_student']}</FormHelperText>
                             </FormControl>
                         </div>
                         <div className="pt-3">
                             <FormControl error={formErrors['phone_student'] != undefined} className="w-100">
-                                <TextField type="number" className="w-100" name="phone_student" label="Telefono del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['phone_student'] != undefined}/>
+                                <TextField type="tel" inputProps={{ maxLength: 10}} className="w-100" name="phone_student" label="Telefono del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['phone_student'] != undefined}/>
                                 <FormHelperText>{formErrors['phone_student'] != undefined && formErrors['phone_student']}</FormHelperText>
                             </FormControl>
                         </div>
@@ -261,7 +262,7 @@ export const Payment = () => {
                         </div>
                         <div className="pt-3">
                             <FormControl error={formErrors['cp_student'] != undefined} className="w-100">
-                                <TextField className="w-100" name="cp_student" label="Código postal" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['cp_student'] != undefined}/>
+                                <TextField className="w-100" name="cp_student" inputProps={{ maxLength: 5}} label="Código postal" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['cp_student'] != undefined}/>
                                 <FormHelperText>{formErrors['cp_student'] != undefined && formErrors['cp_student']}</FormHelperText>
                             </FormControl>
                         </div>
@@ -377,7 +378,7 @@ export const Payment = () => {
                             filteredPaymentMethods &&
                             <div className="pt-3">
                                 <FormControl className="w-100" error={formErrors['paymentReference'] != undefined}>
-                                    <TextField type="number" value={paymentData.paymentReference} className="w-100" name="paymentReference" label="Ficha de pago (Folio, Referencia, No. Movimiento, etc.)" variant="outlined" size="small" onChange={formHandlerChange}  error={formErrors['paymentReference'] != undefined}/>
+                                    <TextField type="text" inputProps={{ maxLength: 12}} value={paymentData.paymentReference} className="w-100" name="paymentReference" label="Ficha de pago (Folio, Referencia, No. Movimiento, etc.)" variant="outlined" size="small" onChange={formHandlerChange}  error={formErrors['paymentReference'] != undefined}/>
                                     <FormHelperText>{formErrors['paymentReference'] != undefined && formErrors['paymentReference']}</FormHelperText>
                                 </FormControl>
                             </div>
