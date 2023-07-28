@@ -1,4 +1,4 @@
-import { Header } from "./header/Header";
+import { Header } from "./Header";
 import { Outlet, useLocation } from "react-router-dom";
 import { Banner } from "./Banner";
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { APIS, useFetch } from "../../fetch/useFetch";
 import { useNavigate } from "react-router-dom";
 
-
+document.title = 'STE | ¡Realiza tu pago!';
 const formValues = {
     'name_student': '',
     'mat_student': '',
@@ -77,6 +77,10 @@ const alertType = {
 }
 
 export const Payment = () => {
+    useEffect(() => {
+        document.title = 'STE | ¡Sube tu pago!';
+    }, []);
+    
     const navigate = useNavigate();
 
     const institutionsData = useFetch('institutions');
@@ -161,7 +165,7 @@ export const Payment = () => {
 
     const removeFile = () => {
         const data = {...paymentData}
-        data['payment_file'] = '';
+        data['payment_file'] = null;
 
         setPaymentData(data);
     }
@@ -169,7 +173,6 @@ export const Payment = () => {
     const sendPaymentData = () => {
         const errors = getSelectInputErrors(paymentData);
         const erroresLength  = Object.keys(errors);
-        console.log(errors);
         if (erroresLength.length > 0) {
             setFormErrors(errors);
             return;
@@ -213,228 +216,261 @@ export const Payment = () => {
             setPaymentMethods(paymentData.school_id);            
         }
     }, [paymentData.school_id]);
-
+    //col-md-10 offset-md-1
     return (
         <div className="px-md-5 pt-3 pb-5">
-            <h1 className="text-start">Pasos para realizar el pago.</h1>
-            <div className="py-3">
-                <p className="size-18 fw-bolder">1.- Hacer el deposito o transferencia del mes correspondiente al siguiente numero de cuenta:</p>
-                <p className="size-16">BANCO BBVA</p>
-                <p className="size-16">No. Tarjeta 4555 1130 1055 1929</p>
-                <p className="size-16">Cuenta 0119334742</p>
-                <p className="size-16">Clabe 012580001193347420</p>
-                <p className="size-16 text-uppercase text-danger" style={{color: ''}}>FAVOR DE INDICAR EN EL CONCEPTO DEL PAGO EL NOMBRE DE SU HIJA O HIJO Y SU MATRÍCULA, SIN ESTOS DATOS SOLICITADOS, NO SE PROCESA EL PAGO</p>
-            </div>
-            <h4>2.- ¡Una vez hecho el deposito, llena el siguiente formulario para poder validar tu pago!</h4>
-            <div className="pt-3">
+            <div className="containe p-3">
                 <div className="row">
-                    <div className="col-12 col-md-6">
-                        <h3>Datos del estudiante</h3>
-                        <div className="pt-3">
-                            <FormControl className="w-100" error={formErrors['name_student'] != undefined}>
-                                <TextField className="w-100" name="name_student" label="Nombre del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['name_student'] != undefined}/>
-                                <FormHelperText>{formErrors['name_student'] != undefined && formErrors['name_student']}</FormHelperText>
-                            </FormControl>
-                        </div>
-                        <div className="pt-3">
-                            <FormControl error={formErrors['mat_student'] != undefined} className="w-100">
-                                <TextField type="text" className="w-100" inputProps={{ maxLength: 7}} name="mat_student" label="Matricula del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['mat_student'] != undefined}/>
-                                <FormHelperText>{formErrors['mat_student'] != undefined && formErrors['mat_student']}</FormHelperText>
-                            </FormControl>
-                        </div>
-                        <div className="pt-3">
-                            <FormControl error={formErrors['phone_student'] != undefined} className="w-100">
-                                <TextField type="tel" inputProps={{ maxLength: 10}} className="w-100" name="phone_student" label="Telefono del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['phone_student'] != undefined}/>
-                                <FormHelperText>{formErrors['phone_student'] != undefined && formErrors['phone_student']}</FormHelperText>
-                            </FormControl>
-                        </div>
-                        <div className="pt-3">
-                            <FormControl error={formErrors['mail_student'] != undefined} className="w-100">
-                                <TextField type="email" className="w-100" name="mail_student" label="Correo electronico (Personal o academico)" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['mail_student'] != undefined}/>
-                                <FormHelperText>{formErrors['mail_student'] != undefined && formErrors['mail_student']}</FormHelperText>
-                            </FormControl>
-                        </div>
-                        <div className="pt-3">
-                            <FormControl error={formErrors['suburb_student'] != undefined} className="w-100">
-                                <TextField className="w-100" name="suburb_student" label="Colonia" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['suburb_student'] != undefined}/>
-                                <FormHelperText>{formErrors['suburb_student'] != undefined && formErrors['suburb_student']}</FormHelperText>
-                            </FormControl>
-                        </div>
-                        <div className="pt-3">
-                            <FormControl error={formErrors['cp_student'] != undefined} className="w-100">
-                                <TextField className="w-100" name="cp_student" inputProps={{ maxLength: 5}} label="Código postal" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['cp_student'] != undefined}/>
-                                <FormHelperText>{formErrors['cp_student'] != undefined && formErrors['cp_student']}</FormHelperText>
-                            </FormControl>
+                    <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded">Formato pago</h2>
+                        <div className="row mt-4">
+                            <div className="col-12 col-md-6">
+                                <p className="size-16 fw-normal py-2 text-justify">1.- El primer paso a realizar es hacer un deposito o transferencia al numero de cuenta.</p>
+                                <p className="size-16 fw-normal py-2 text-justify">2.- Una vez hecho el deposito, llena el siguiente formulario para poder validar tu pago</p>
+                                <p className="size-16 fw-normal py-2 text-justify">3.- Tener a la mano una imagen digital ya que será necesario subir evidencia de la transferencia o deposito.</p>
+                                <p className="size-16 fw-bolder text-danger py-2 text-justify">*Favor de indiciar en el concepto del pago: el nombre de su hijo/a y su matricula, sin estos datos NO se procesara el pago.</p>
+                            </div>
+                            <div className="col-12 col-md-6">
+                                <div className="px-3 d-flex justify-content-center box-shadow-primary rounded py-2">
+                                    <div>
+                                        <p className="size-16 fw-bolder py-1 text-center">Datos bancarios</p>
+                                        <p className="size-16 fw-normal py-1"><b>Banco:</b> BBVA</p>
+                                        <p className="size-16 fw-normal py-1"><b>No. tarjeta:</b> 4555 1130 1055 1929</p>
+                                        <p className="size-16 fw-normal py-1"><b>Cuenta:</b> 0119334742</p>
+                                        <p className="size-16 fw-normal py-1"><b>Clabe:</b> 012580001193347420</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div className="col-12 col-md-6">
-                        <h3>Datos de educación</h3>
-                        {
-                            institutionsData.data &&
-                            <div className="pt-3">
-                                <FormControl fullWidth size="small" error={formErrors['grade_education'] != undefined}>
-                                    <InputLabel>Grado de educación</InputLabel>
-                                    <Select
-                                        label="Grado de educación"
-                                        name="grade_education"
-                                        defaultValue = ""
-                                        onChange={formHandlerChange}
-                                        error={formErrors['grade_education'] != undefined}
-                                    >
-                                        <MenuItem value={'1'}>Bachillerato</MenuItem>
-                                        <MenuItem value={'0'}>Facutad</MenuItem>
-                                    </Select>
-                                    <FormHelperText>{formErrors['grade_education'] != undefined && formErrors['cp_student']}</FormHelperText>
-                                </FormControl>
-                            </div>                    
-                        }
-                        {
-                            filteredInstitutions &&
-                            <div className="pt-3">
-                                <FormControl fullWidth size="small">
-                                    <InputLabel id="demo-simple-select-label">Institución</InputLabel>
-                                    <Select
-                                        label="Institucion"
-                                        name="school_id"
-                                        defaultValue = ""
-                                        onChange={(event) => {
-                                            formHandlerChange(event);
-                                            getRoutesBySchool(event.target.value);
-                                        }}
-                                        value={paymentData.school_id}
-                                    >
-                                        {
-                                            filteredInstitutions?.map(i => (<MenuItem value={i.institutionId} key={i.institutionId} data-affiliate-school={i.affiliateSchool}>{i.institutionName}</MenuItem>))
-                                        }
-                                    </Select>
-                                </FormControl>
+                </div>
+            </div>
+            <div className="pt-3 container">
+                <div className="row">
+                    <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded">Datos del estudiante</h2>
+                        <div className="row">
+                            <div className="col-12 col-md-6">
+                                <div className="pt-3">
+                                    <FormControl className="w-100" error={formErrors['name_student'] !== undefined}>
+                                        <TextField className="w-100" name="name_student" label="Nombre del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['name_student'] !== undefined}/>
+                                        <FormHelperText>{formErrors['name_student'] !== undefined && formErrors['name_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
+                                <div className="pt-3">
+                                    <FormControl error={formErrors['phone_student'] !== undefined} className="w-100">
+                                        <TextField type="number" inputProps={{ maxLength: 10}} className="w-100" name="phone_student" label="Telefono del tutor" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['phone_student'] !== undefined}/>
+                                        <FormHelperText>{formErrors['phone_student'] !== undefined && formErrors['phone_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
+                                <div className="pt-3">
+                                    <FormControl error={formErrors['suburb_student'] !== undefined} className="w-100">
+                                        <TextField className="w-100" name="suburb_student" label="Colonia" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['suburb_student'] !== undefined}/>
+                                        <FormHelperText>{formErrors['suburb_student'] !== undefined && formErrors['suburb_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
                             </div>
-                        }                    
-                        {
-                            filteredStudyTypes &&
-                            <div className="pt-3">
-                                <FormControl fullWidth size="small" error={formErrors['type_study'] != undefined}>
-                                    <InputLabel id="demo-simple-select-label">Tipo de estudio</InputLabel>
-                                    <Select                                    
-                                        label="Tipo de estudio"
-                                        name="type_study"
-                                        defaultValue = ""
-                                        onChange={formHandlerChange}
-                                        value={paymentData.type_study}
-                                        error={formErrors['grade_education'] != undefined}
-                                    >
-                                        {
-                                            filteredStudyTypes?.map(s => (<MenuItem value={s.study_id} key={s.study_id}>{s.study_desc}</MenuItem>))
-                                        }
-                                    </Select>
-                                    <FormHelperText>{formErrors['type_study'] != undefined && formErrors['type_study']}</FormHelperText>
-                                </FormControl>
+                            <div className="col-12 col-md-6">
+                                <div className="pt-3">
+                                    <FormControl error={formErrors['mat_student'] !== undefined} className="w-100">
+                                        <TextField type="number" className="w-100" name="mat_student" label="Matricula del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['mat_student'] !== undefined}/>
+                                        <FormHelperText>{formErrors['mat_student'] !== undefined && formErrors['mat_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
+                                <div className="pt-3">
+                                    <FormControl error={formErrors['mail_student'] !== undefined} className="w-100">
+                                        <TextField type="email" className="w-100" name="mail_student" label="Correo electronico del tutor" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['mail_student'] !== undefined}/>
+                                        <FormHelperText>{formErrors['mail_student'] !== undefined && formErrors['mail_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
+                                <div className="pt-3">
+                                    <FormControl error={formErrors['cp_student'] !== undefined} className="w-100">
+                                        <TextField className="w-100" name="cp_student" type="number" label="Código postal" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['cp_student'] !== undefined}/>
+                                        <FormHelperText>{formErrors['cp_student'] !== undefined && formErrors['cp_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
                             </div>
-                        }         
-                        {
-                            filteredShift &&
-                            <div className="pt-3">
-                                <FormControl fullWidth size="small" error={formErrors['shift'] != undefined}>
-                                    <InputLabel id="demo-simple-select-label">Turnos</InputLabel>
-                                    <Select
-                                        label="Turnos"
-                                        name="shift"
-                                        defaultValue = ""
-                                        value={paymentData.shift}
-                                        onChange={formHandlerChange}
-                                        error={formErrors['shift'] != undefined}
-                                    >
-                                        {
-                                            filteredShift?.map(s => (<MenuItem value={s.id_shift} key={s.id_shift}>{s.description}</MenuItem>))
-                                        }
-                                    </Select>
-                                    <FormHelperText>{formErrors['shift'] != undefined && formErrors['shift']}</FormHelperText>
-                                </FormControl>
-                            </div>
-                        }     
-                        {
-                            routes &&
-                            <div className="pt-3">
-                                <FormControl fullWidth size="small" error={formErrors['route_id'] != undefined}>
-                                    <InputLabel id="demo-simple-select-label">Seleccione la ruta</InputLabel>
-                                    <Select
-                                        label="Seleccione la ruta"
-                                        name="route_id"
-                                        defaultValue = ""
-                                        value={paymentData.route_id}
-                                        onChange={formHandlerChange}
-                                        error={formErrors['route_id'] != undefined}
-                                    >
-                                        {
-                                            routes?.map(r => (<MenuItem value={r.id_route} key={r.id_route}>{r.name}</MenuItem>))
-                                        }
-                                    </Select>
-                                    <FormHelperText>{formErrors['route_id'] != undefined && formErrors['route_id']}</FormHelperText>
-                                </FormControl>
-                            </div>
-                        }
-                        {
-                            filteredPaymentMethods &&
-                            <div className="pt-3">
-                                <FormControl className="w-100" error={formErrors['paymentReference'] != undefined}>
-                                    <TextField type="text" inputProps={{ maxLength: 12}} value={paymentData.paymentReference} className="w-100" name="paymentReference" label="Ficha de pago (Folio, Referencia, No. Movimiento, etc.)" variant="outlined" size="small" onChange={formHandlerChange}  error={formErrors['paymentReference'] != undefined}/>
-                                    <FormHelperText>{formErrors['paymentReference'] != undefined && formErrors['paymentReference']}</FormHelperText>
-                                </FormControl>
-                            </div>
-                        }  
-                        {
-                            filteredPaymentMethods &&
-                            <div className="pt-3">
-                                <FormControl error={formErrors['pay_type'] != undefined}>
-                                    <FormLabel>Tipo de pago:</FormLabel>
-                                    <RadioGroup                                   
-                                        defaultValue={filteredPaymentMethods[0].id_pay}
-                                        name="pay_type"
-                                        onChange={formHandlerChange}
-                                        value={paymentData.pay_type}                                                                
-                                    >
-                                        {
-                                            filteredPaymentMethods?.map(m => (<FormControlLabel value={m.id_pay} key={m.id_pay} control={<Radio />} label={m.description} />))
-                                        }
-                                    </RadioGroup>
-                                    <FormHelperText>{formErrors['pay_type'] != undefined && formErrors['pay_type']}</FormHelperText>
-                                </FormControl>
-                            </div>
-                        }
-                        {
-                            filteredPaymentMethods &&
-                            <div className="pt-3 text-end">
-                                <label className="d-block">*Unicamente se aceptan imagenes.</label>
+                        </div>
+                    </div>
+                </div>
+                <div className="row mt-4">
+                    <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2" style={{minHeight: "300px"}}>
+                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded">Datos de reservación</h2>
+                        <div className="row">
+                            <div className="col-12 col-md-6">
                                 {
-                                    paymentData.payment_file &&
-                                    <div className="text-end me-3 mb-3">
-                                        <button className="btn-custom btn-custom-md btn-custom-danger me-2" onClick={removeFile}>Borrar archivo</button>
-                                        <label className="d-inline-block me-3">{paymentData.payment_file.name}</label>
+                                    institutionsData.data &&
+                                    <div className="pt-3">
+                                        <FormControl fullWidth size="small" error={formErrors['grade_education'] !== undefined}>
+                                            <InputLabel>Grado de educación</InputLabel>
+                                            <Select
+                                                label="Grado de educación"
+                                                name="grade_education"
+                                                defaultValue = ""
+                                                onChange={formHandlerChange}
+                                                error={formErrors['grade_education'] !== undefined}
+                                            >
+                                                <MenuItem value={'1'}>Bachillerato</MenuItem>
+                                                <MenuItem value={'0'}>Facutad</MenuItem>
+                                            </Select>
+                                            <FormHelperText>{formErrors['grade_education'] !== undefined && formErrors['cp_student']}</FormHelperText>
+                                        </FormControl>
+                                    </div>                    
+                                }
+                                {
+                                    filteredInstitutions &&
+                                    <div className="pt-3">
+                                        <FormControl fullWidth size="small">
+                                            <InputLabel id="demo-simple-select-label">Institución</InputLabel>
+                                            <Select
+                                                label="Institucion"
+                                                name="school_id"
+                                                defaultValue = ""
+                                                onChange={(event) => {
+                                                    formHandlerChange(event);
+                                                    getRoutesBySchool(event.target.value);
+                                                }}
+                                                value={paymentData.school_id}
+                                            >
+                                                {
+                                                    filteredInstitutions?.map(i => (<MenuItem value={i.institutionId} key={i.institutionId} data-affiliate-school={i.affiliateSchool}>{i.institutionName}</MenuItem>))
+                                                }
+                                            </Select>
+                                        </FormControl>
                                     </div>
                                 }
-                                <Button
-                                    variant="contained"
-                                    component="label"
-                                >
-                                    Subir comprobante
-                                    <input
-                                        type="file"
-                                        hidden
-                                        name="payment_file"
-                                        accept="image/*"
-                                        onChange={formHandlerChange}                                        
-                                    />
-                                </Button>
+                                {
+                                    filteredStudyTypes &&
+                                    <div className="pt-3">
+                                        <FormControl fullWidth size="small" error={formErrors['type_study'] !== undefined}>
+                                            <InputLabel id="demo-simple-select-label">Tipo de estudio</InputLabel>
+                                            <Select                                    
+                                                label="Tipo de estudio"
+                                                name="type_study"
+                                                defaultValue = ""
+                                                onChange={formHandlerChange}
+                                                value={paymentData.type_study}
+                                                error={formErrors['grade_education'] !== undefined}
+                                            >
+                                                {
+                                                    filteredStudyTypes?.map(s => (<MenuItem value={s.study_id} key={s.study_id}>{s.study_desc}</MenuItem>))
+                                                }
+                                            </Select>
+                                            <FormHelperText>{formErrors['type_study'] !== undefined && formErrors['type_study']}</FormHelperText>
+                                        </FormControl>
+                                    </div>
+                                }
+                                {
+                                    filteredShift &&
+                                    <div className="pt-3">
+                                        <FormControl fullWidth size="small" error={formErrors['shift'] !== undefined}>
+                                            <InputLabel id="demo-simple-select-label">Turno</InputLabel>
+                                            <Select
+                                                label="Turno"
+                                                name="shift"
+                                                defaultValue = ""
+                                                value={paymentData.shift}
+                                                onChange={formHandlerChange}
+                                                error={formErrors['shift'] !== undefined}
+                                            >
+                                                {
+                                                    filteredShift?.map(s => (<MenuItem value={s.id_shift} key={s.id_shift}>{s.description}</MenuItem>))
+                                                }
+                                            </Select>
+                                            <FormHelperText>{formErrors['shift'] !== undefined && formErrors['shift']}</FormHelperText>
+                                        </FormControl>
+                                    </div>
+                                }
+                                {
+                                    routes &&
+                                    <div className="pt-3">
+                                        <FormControl fullWidth size="small" error={formErrors['route_id'] !== undefined}>
+                                            <InputLabel id="demo-simple-select-label">Seleccione la ruta</InputLabel>
+                                            <Select
+                                                label="Seleccione la ruta"
+                                                name="route_id"
+                                                defaultValue = ""
+                                                value={paymentData.route_id}
+                                                onChange={formHandlerChange}
+                                                error={formErrors['route_id'] !== undefined}
+                                            >
+                                                {
+                                                    routes?.map(r => (<MenuItem value={r.id_route} key={r.id_route}>{r.name}</MenuItem>))
+                                                }
+                                            </Select>
+                                            <FormHelperText>{formErrors['route_id'] !== undefined && formErrors['route_id']}</FormHelperText>
+                                        </FormControl>
+                                    </div>
+                                }
                             </div>
-                        }
-                        {
-                            <div className="text-end pt-3">            
-                                <button className="btn-custom btn-custom-md btn-custom-primary" onClick={sendPaymentData}>Enviar</button>
-                            </div>
-                        }
-                    </div>
+                            <div className="col-12 col-md-6">
+                                {
+                                    filteredPaymentMethods &&
+                                    <div className="pt-3">
+                                        <FormControl className="w-100" error={formErrors['paymentReference'] !== undefined}>
+                                            <TextField type="number" inputProps={{ maxLength: 12}} value={paymentData.paymentReference} className="w-100" name="paymentReference" label="Ficha de pago (Folio, Referencia, No. Movimiento, etc.)" variant="outlined" size="small" onChange={formHandlerChange}  error={formErrors['paymentReference'] !== undefined}/>
+                                            <FormHelperText>{formErrors['paymentReference'] !== undefined && formErrors['paymentReference']}</FormHelperText>
+                                        </FormControl>
+                                    </div>
+                                }
+                                {
+                                    filteredPaymentMethods &&
+                                    <div className="py-3">
+                                        <label className="d-block mb-2 text-danger text-justify fw-bolder">*Unicamente se acepta un archivo de tipo imagen.</label>
+                                        {
+                                            paymentData.payment_file &&
+                                            <div className="d-flex no-wrap me-3 mb-3">
+                                                <button className="btn-custom btn-custom-md btn-custom-danger me-2" onClick={removeFile} style={{whiteSpace: 'nowrap'}}>Borrar archivo</button>
+                                                <p className="d-inline-block me-3 text-elipsis">{paymentData.payment_file.name}</p>
+                                            </div>
+                                        }
+                                        <Button
+                                            variant="contained"
+                                            component="label"
+                                            className="ste-btn ste-btn-primary"
+                                            style={{
+                                                borderRadius: '0.5rem',
+                                                backgroundColor: '#2A2AD3',
 
+                                            }}
+                                            disabled={paymentData.payment_file !== null}
+                                        >
+                                            Subir comprobante
+                                            <input
+                                                type="file"
+                                                hidden
+                                                name="payment_file"
+                                                accept="image/*"
+                                                onChange={formHandlerChange}                                        
+                                            />
+                                        </Button>
+                                    </div>
+                                }
+                                {
+                                    filteredPaymentMethods &&
+                                    <div className="pt-3">
+                                        <FormControl error={formErrors['pay_type'] !== undefined}>
+                                            <FormLabel>Tipo de pago:</FormLabel>
+                                            <RadioGroup                                   
+                                                defaultValue={filteredPaymentMethods[0].id_pay}
+                                                name="pay_type"
+                                                onChange={formHandlerChange}
+                                                value={paymentData.pay_type}                                                                
+                                            >
+                                                {
+                                                    filteredPaymentMethods?.map(m => (<FormControlLabel value={m.id_pay} key={m.id_pay} control={<Radio />} label={m.description} />))
+                                                }
+                                            </RadioGroup>
+                                            <FormHelperText>{formErrors['pay_type'] !== undefined && formErrors['pay_type']}</FormHelperText>
+                                        </FormControl>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div className="text-end pt-3">            
+                            <button className="ste-btn ste-btn-primary" onClick={sendPaymentData}>Enviar</button>
+                        </div>
+                    </div>
                 </div>
                 <Snackbar open={openSnackbar} autoHideDuration={1800} onClose={() => {setOpenSnackbar(false); navigate(0);}}>
                     <Alert severity={alert.type} sx={{ width: '100%' }}>

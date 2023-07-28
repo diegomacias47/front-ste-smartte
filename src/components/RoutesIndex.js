@@ -8,6 +8,7 @@ import { MyRoutes } from "../pages/my-routes/MyRoutes";
 import { Reserve } from "../pages/reserve-form/Reserve";
 import { Account } from "../pages/account/Account";
 import { Payment } from "../pages/payment/Payment";
+import { QRGenerator } from "../pages/qr-generator/QRGenerator";
 
 export const RoutesIndex = () => {
     return (
@@ -19,6 +20,7 @@ export const RoutesIndex = () => {
                 <Route path='/login' element={<Login />} ></Route>
                 <Route path='/reservation' element={<Reserve />} ></Route>
                 <Route path='/payment' element={<Payment />} ></Route>
+                <Route path='/qr' element={<QRGenerator />} ></Route>
             </Route>
             <Route element={<ProtectedRoute />}>
                 <Route path='/account' element={<Account />} ></Route>

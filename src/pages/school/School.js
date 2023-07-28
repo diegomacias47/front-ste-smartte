@@ -1,4 +1,3 @@
-import { Header } from "../../components/header/Header";
 import { useFetch } from "../../fetch/useFetch";
 import { Institution } from "../../components/Institution";
 import { CircularProgress } from "@mui/material";

@@ -8,9 +8,13 @@ import Jorge from '../../assets/jorge.png';
 import Karla from '../../assets/karla.jpeg';
 import Karen from '../../assets/karen.jpeg';
 import Banner_A from './../../assets/banner_A.jpg';
+import { useEffect } from 'react';
 
 
 export function Home() {
+    useEffect(() => {
+        document.title = 'STE | Inicio';
+    }, []);
     return(
         <main>
             <div className='separator'></div>
