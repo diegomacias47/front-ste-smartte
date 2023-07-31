@@ -3,6 +3,7 @@
     --primary-color: #2A2AD3;
     --primary-color-hover: #03276c;
     --primary-outlined-color: #2A2AD3;
+    --primary-color-gradient: linear-gradient(90deg, rgba(3,39,108,1) 0%, rgba(19,19,159,1) 35%, rgba(2,121,219,1) 100%);
     --secondary-color: #FFE104;
 }
 

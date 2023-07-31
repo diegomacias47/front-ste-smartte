@@ -22,7 +22,7 @@ export const Header = () => {
   }
   console.log(location.pathname);
   return (
-    <div className='py-3 px-md-2 px-lg-4 box-shadow-primary' style={headerClasses.header}>
+    <div className='py-3 px-3 px-lg-4 box-shadow-primary' style={headerClasses.header}>
       <div className='container-fluid px-0 px-md-2 d-flex justify-content-around'>
         <div className='d-flex align-items-center justify-content-center'>
           <img className='logo me-3' src={SteLogo} alt='ste-logo' style={headerClasses.logo} />

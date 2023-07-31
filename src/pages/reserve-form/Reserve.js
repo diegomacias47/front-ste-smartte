@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import FormHelperText from "@mui/material/FormHelperText";
 import { Link, useNavigate } from "react-router-dom";
 import {Snackbar, Alert} from "@mui/material";
+import { Footer } from "../../components/Footer";
 const initialValues = {
     'tutor_name': '',
     'tutor_phone': '',
@@ -70,9 +71,9 @@ const alertType = {
 }
 
 export const Reserve = () => {
-    useEffect(() => {
+    /*useEffect(() => {
         document.title = 'STE | ¡Reserva tu ruta!';
-    }, []);
+    }, []);*/
 
     const schoolsData = useFetch('schools');
     const allCities = useFetch('cities');
@@ -144,9 +145,9 @@ export const Reserve = () => {
             <div className="container pt-3 px-md-5 pb-5" >                
                 <div className="row">
                     <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                        <h2 className="mt-3 text-center ste-text-secondary ste-bg-primary rounded">¡Reserva tu Ruta!</h2>
+                        <h2 className="mt-3 text-center text-white ste-bg-primary rounded">¡Reserva tu Ruta!</h2>
                         <p className="py-5 text-center fw-bolder">Reserva tu ruta en STE Transporte Estudiantil llenando el siguiente formulario.</p>
-                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded mb-2">Datos del tutor</h2>
+                        <h2 className="text-center text-white ste-bg-primary rounded mb-2">Datos del tutor</h2>
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 <div className="pb-2">
@@ -175,7 +176,7 @@ export const Reserve = () => {
                                 </div>
                             </div>
                         </div>
-                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded mb-2">Datos de Dirección:</h2>
+                        <h2 className="text-center text-white ste-bg-primary rounded mb-2">Datos de Dirección:</h2>
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 <div className="pb-2">
@@ -235,7 +236,7 @@ export const Reserve = () => {
                         </div>
                     </div>
                     <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mt-1">
-                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded mb-2">Datos escolares</h2>
+                        <h2 className="text-center text-white ste-bg-primary rounded mb-2">Datos escolares</h2>
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 <div className="pb-2">

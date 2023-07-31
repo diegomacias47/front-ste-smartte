@@ -1,0 +1,35 @@
+.publicity {
+    width: 100vw;
+}
+
+.testimonials .caption {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.testimonials .testimonial {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+    border-radius: 0.5rem;    
+}
+
+@media (min-width: 768px) {
+    .publicity {
+        width: 80vw;
+    }
+
+    .testimonials .caption{
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .publicity {
+        width: 40vw;
+    }
+
+    .testimonials .caption{
+        width: 60%;
+    }
+}

@@ -7,7 +7,7 @@ export const Institution = ({institution, cb}) => {
         <div className="p-1 p-md-2 p-md-3">
             <div className="box-shadow-primary rounded" style={{height: '350px'}}>
                 <div className="p-2 text-center" style={{height: '50%'}}>
-                    <img className="h-100 w-100 px-3" src={imageHost + institution.url_logo} alt="img_institution"/>
+                    <img className="h-100 w-100 px-3" loading="lazy" src={imageHost + institution.url_logo} alt="img_institution"/>
                 </div>
                 <div className="px-2 text-center" style={{height: '35%'}}>
                     <label className="size-18 fw-bolder">

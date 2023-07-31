@@ -1,9 +1,9 @@
 import { Button, FormControl, TextField, FormHelperText, Select, MenuItem, InputLabel, Radio, FormLabel, RadioGroup, FormControlLabel, Alert, AlertTitle, Snackbar } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { APIS, useFetch } from "../../fetch/useFetch";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../../components/Footer";
 
-document.title = 'STE | ¡Realiza tu pago!';
 const formValues = {
     'name_student': '',
     'mat_student': '',
@@ -77,9 +77,9 @@ const alertType = {
 }
 
 export const Payment = () => {
-    useEffect(() => {
+    /*useEffect(() => {
         document.title = 'STE | ¡Sube tu pago!';
-    }, []);
+    }, []);*/
     
     const navigate = useNavigate();
 
@@ -216,13 +216,12 @@ export const Payment = () => {
             setPaymentMethods(paymentData.school_id);            
         }
     }, [paymentData.school_id]);
-    //col-md-10 offset-md-1
     return (
         <div className="px-md-5 pt-3 pb-5">
-            <div className="containe p-3">
+            <div className="container p-3">
                 <div className="row">
                     <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded">Formato pago</h2>
+                        <h2 className="text-center text-white ste-bg-primary rounded">Formato pago</h2>
                         <div className="row mt-4">
                             <div className="col-12 col-md-6">
                                 <p className="size-16 fw-normal py-2 text-justify">1.- El primer paso a realizar es hacer un deposito o transferencia al numero de cuenta.</p>
@@ -247,8 +246,8 @@ export const Payment = () => {
             </div>
             <div className="pt-3 container">
                 <div className="row">
-                    <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded">Datos del estudiante</h2>
+                    <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                        <h2 className="text-center text-white ste-bg-primary rounded">Datos del estudiante</h2>
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 <div className="pt-3">
@@ -295,7 +294,7 @@ export const Payment = () => {
                 </div>
                 <div className="row mt-4">
                     <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2" style={{minHeight: "300px"}}>
-                        <h2 className="text-center ste-text-secondary ste-bg-primary rounded">Datos de reservación</h2>
+                        <h2 className="text-center text-white ste-bg-primary rounded">Datos de reservación</h2>
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 {
