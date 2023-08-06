@@ -1,5 +1,4 @@
 
-import {Box } from '@mui/material';
 import InstallMobileIcon from '@mui/icons-material/InstallMobile';
 import SecurityIcon from '@mui/icons-material/Security';
 import SchoolIcon from '@mui/icons-material/School';
@@ -7,13 +6,10 @@ import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
 import Jorge from '../../assets/jorge.png';
 import Karla from '../../assets/karla.jpeg';
 import Karen from '../../assets/karen.jpeg';
-import Banner_A from './../../assets/banner_A.jpg';
 import Publicidad from './../../assets/PublicidadFormat.jpg';
 import { useEffect } from 'react';
 import './Home.css';
 import { Fragment } from 'react';
-import { Footer } from '../../components/Footer';
-
 
 export function Home() {
     /*useEffect(() => {
@@ -87,7 +83,7 @@ export function Home() {
                     <div className='mt-3'>
                         <h1 className='fw-bolder text-center size-26'>¡Transporte seguro!</h1>
                         <div className='py-4'>
-                            <img className='publicity rounded' src={Publicidad} />
+                            <img className='publicity rounded' src={Publicidad} alt='publicity' />
                         </div>
                     </div>
                 </div>
@@ -103,49 +99,50 @@ export function Home() {
                             un transporte para llegar a su preparatoria o facultad.
                         </p>
                     </div>
-
-                    <div className='row'>
-                        <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0'>
-                            <div className="p-2 testimonial">
-                                <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
-                                    <img src={Jorge} style={{borderRadius: '50%', height: '55px', width: '60px'}}/>
-                                    <div className='px-3'>
-                                        <p className='size-18 fw-bolder'>Jorge Torres</p>
-                                        <small className='size-12'>Estudiante de la Prepa 7 Ote.</small>
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0 mt-3'>
+                                <div className="p-2 testimonial">
+                                    <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
+                                        <img src={Jorge} style={{borderRadius: '50%', height: '55px', width: '60px'}} alt='Jorge'/>
+                                        <div className='px-3'>
+                                            <p className='size-18 fw-bolder'>Jorge Torres</p>
+                                            <small className='size-12'>Estudiante de la Prepa 7 Ote.</small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="text-center py-3" style={{borderTop: '1px solid rgb(200, 200, 200)'}}>
-                                    <p className='size-14'>El servicio es excelente, los choferes son muy amables y cuidadonos al conducir, siempre llego temprano a mis clases.</p>
-                                </div>
-                            </div>                              
-                        </div>
-                        <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0'>
-                            <div className="p-2 testimonial">
-                                <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
-                                    <img src={Karla} style={{borderRadius: '50%', height: '55px', width: '60px'}}/>
-                                    <div className='px-3'>
-                                        <p className='size-18 fw-bolder'>Karla Castro</p>
-                                        <small className='size-12'>Estudiante de la Prepa 22 L. Vista</small>
+                                    <div className="text-center py-3" style={{borderTop: '1px solid rgb(200, 200, 200)'}}>
+                                        <p className='size-14'>El servicio es excelente, los choferes son muy amables y cuidadonos al conducir, siempre llego temprano a mis clases.</p>
                                     </div>
-                                </div>
-                                <div className="text-center py-3" style={{borderTop: '1px solid rgb(200, 200, 200)'}}>
-                                    <p className='size-14'>El servicio es excelente, los choferes son muy amables y cuidadonos al conducir, siempre llego temprano a mis clases.</p>
-                                </div>
-                            </div>                              
-                        </div>
-                        <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0'>
-                            <div className="p-2 testimonial">
-                                <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
-                                    <img src={Karen} style={{borderRadius: '50%', height: '55px', width: '60px'}}/>
-                                    <div className='px-3'>
-                                        <p className='size-18 fw-bolder'>Karen Peréz</p>
-                                        <small className='size-12'>Estudiante de CIDEB</small>
+                                </div>                              
+                            </div>
+                            <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0 mt-3'>
+                                <div className="p-2 testimonial">
+                                    <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
+                                        <img src={Karla} style={{borderRadius: '50%', height: '55px', width: '60px'}} alt='Karla'/>
+                                        <div className='px-3'>
+                                            <p className='size-18 fw-bolder'>Karla Castro</p>
+                                            <small className='size-12'>Estudiante de la Prepa 22 L. Vista</small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="text-center py-3" style={{borderTop: '1px solid rgb(200, 200, 200)'}}>
-                                    <p className='size-14'>El servicio es excelente, los choferes son muy amables y cuidadonos al conducir, siempre llego temprano a mis clases.</p>
-                                </div>
-                            </div>                              
+                                    <div className="text-center py-3" style={{borderTop: '1px solid rgb(200, 200, 200)'}}>
+                                        <p className='size-14'>El servicio es excelente, los choferes son muy amables y cuidadonos al conducir, siempre llego temprano a mis clases.</p>
+                                    </div>
+                                </div>                              
+                            </div>
+                            <div className='col-12 col-md-6 col-lg-4 pt-3 pt-md-0 mt-3'>
+                                <div className="p-2 testimonial">
+                                    <div className="py-2 text-align-center my-2 mx-0 d-flex justify-content-center align-items-center">
+                                        <img src={Karen} style={{borderRadius: '50%', height: '55px', width: '60px'}} alt='Karen'/>
+                                        <div className='px-3'>
+                                            <p className='size-18 fw-bolder'>Karen Peréz</p>
+                                            <small className='size-12'>Estudiante de CIDEB</small>
+                                        </div>
+                                    </div>
+                                    <div className="text-center py-3" style={{borderTop: '1px solid rgb(200, 200, 200)'}}>
+                                        <p className='size-14'>El servicio es excelente, los choferes son muy amables y cuidadonos al conducir, siempre llego temprano a mis clases.</p>
+                                    </div>
+                                </div>                              
+                            </div>
                         </div>
                     </div>
                 </div>

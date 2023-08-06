@@ -1,12 +1,12 @@
-import { Button, FormControl, TextField, FormHelperText, Select, MenuItem, InputLabel, Radio, FormLabel, RadioGroup, FormControlLabel, Alert, AlertTitle, Snackbar } from "@mui/material";
-import { useState, useEffect, Fragment } from "react";
+import { Button, FormControl, TextField, FormHelperText, Select, MenuItem, InputLabel, Radio, FormLabel, RadioGroup, FormControlLabel, Alert, Snackbar } from "@mui/material";
+import { useState, useEffect } from "react";
 import { APIS, useFetch } from "../../fetch/useFetch";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../../components/Footer";
 
 const formValues = {
     'name_student': '',
     'mat_student': '',
+    'parent_name': '',
     'phone_student': '',
     'mail_student': '',
     'suburb_student': '',
@@ -30,6 +30,9 @@ const getSelectInputErrors = (values) => {
     }
     if (!values['mat_student'] ||  isNaN(values["mat_student"])) {
         errors['mat_student'] = 'Este campo es obligatorio y debe ser numerico.'
+    }
+    if (!values['parent_name']) {
+        errors['parent_name'] = 'Este campo es obligatorio.'
     }
     if (!values['phone_student'] || isNaN(values['phone_student'])) {
         errors['phone_student'] = 'Este campo es obligatorio y debe ser numerico.'
@@ -184,14 +187,13 @@ export const Payment = () => {
         keys.forEach(val => {
             fd.append(val, paymentData[val]);
         });
-        console.log('HOlaa');
         fetch(APIS.ApiV3 + 'payments', {
             method: 'POST',
             mode: 'cors',
             body: fd
-        }).
-        then(json => json.json()).
-        then(() => {
+        })
+        .then(json => json.json())
+        .then(() => {
             setAlert({type: 'success', message: 'Formulario enviado correctamente.'})
             setOpenSnackbar(true);
         })
@@ -254,6 +256,12 @@ export const Payment = () => {
                                     <FormControl className="w-100" error={formErrors['name_student'] !== undefined}>
                                         <TextField className="w-100" name="name_student" label="Nombre del estudiante" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['name_student'] !== undefined}/>
                                         <FormHelperText>{formErrors['name_student'] !== undefined && formErrors['name_student']}</FormHelperText>
+                                    </FormControl>
+                                </div>
+                                <div className="pt-3">
+                                    <FormControl error={formErrors['parent_name'] !== undefined} className="w-100">
+                                        <TextField type="text" className="w-100" name="parent_name" label="Nombre del tutor" variant="outlined" size="small" onChange={formHandlerChange} error={formErrors['parent_name'] !== undefined}/>
+                                        <FormHelperText>{formErrors['parent_name'] !== undefined && formErrors['parent_name']}</FormHelperText>
                                     </FormControl>
                                 </div>
                                 <div className="pt-3">
@@ -471,7 +479,7 @@ export const Payment = () => {
                         </div>
                     </div>
                 </div>
-                <Snackbar open={openSnackbar} autoHideDuration={1800} onClose={() => {setOpenSnackbar(false); navigate(0);}}>
+                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}} open={openSnackbar} autoHideDuration={1800} onClose={() => {setOpenSnackbar(false); navigate(0);}}>
                     <Alert severity={alert.type} sx={{ width: '100%' }}>
                         {
                             alert.message

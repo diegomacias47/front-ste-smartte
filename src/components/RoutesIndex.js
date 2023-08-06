@@ -25,10 +25,13 @@ export const RoutesIndex = () => {
             <Route element={<ProtectedRoute />}>
                 <Route path='/account' element={<Account />} ></Route>
             </Route>
-            <Route
-                path="*"
-                element={<Navigate to="/home" replace />}
-            />
+            {
+                <Route
+                    path="*"
+                    element={<Navigate to="/home" replace />}
+                />
+
+            }
         </Routes>
     );
 }

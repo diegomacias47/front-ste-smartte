@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import FormHelperText from "@mui/material/FormHelperText";
 import { Link, useNavigate } from "react-router-dom";
 import {Snackbar, Alert} from "@mui/material";
-import { Footer } from "../../components/Footer";
+
 const initialValues = {
     'tutor_name': '',
     'tutor_phone': '',
@@ -204,9 +204,9 @@ export const Reserve = () => {
                                 </div>
                                 <div className="pb-2">
                                     <small className="d-inline-block mb-2">*Opcional</small>
-                                    <FormControl error={errors.house_number !== undefined} className="w-100 mt-1">
-                                        <TextField error={errors.house_number !== undefined} type="number" className="w-100" id="house_number" name="house_number" label="Numero exterior" variant="outlined" onChange={handleChange} size="small"/>
-                                        <FormHelperText>{errors.house_number}</FormHelperText>
+                                    <FormControl error={errors.street !== undefined} className="w-100 mt-1">
+                                        <TextField error={errors.street !== undefined} className="w-100" id="street" label="Calle" name="street" variant="outlined" onChange={handleChange} size="small"/>
+                                        <FormHelperText>{errors.street}</FormHelperText>
                                     </FormControl>
                                 </div>
                                 <div className="pb-2">
@@ -219,17 +219,17 @@ export const Reserve = () => {
                             </div>
                             <div className="col-12 col-md-6">
                                 <div className="pb-2">
-                                    <small className="d-inline-block mb-2">*Opcional</small>
-                                    <FormControl error={errors.street !== undefined} className="w-100 mt-1">
-                                        <TextField error={errors.street !== undefined} className="w-100" id="street" label="Calle" name="street" variant="outlined" onChange={handleChange} size="small"/>
-                                        <FormHelperText>{errors.street}</FormHelperText>
-                                    </FormControl>
-                                </div>
-                                <div className="pb-2">
                                     <small className="d-inline-block mb-2">*Obligatorio</small>
                                     <FormControl error={errors.suburb !== undefined} className="w-100 mt-1">
                                         <TextField error={errors.suburb !== undefined} className="w-100" id="suburb" name="suburb" label="Colonia" variant="outlined" onChange={handleChange} size="small"/>
                                         <FormHelperText>{errors.suburb}</FormHelperText>
+                                    </FormControl>
+                                </div>
+                                <div className="pb-2">
+                                    <small className="d-inline-block mb-2">*Opcional</small>
+                                    <FormControl error={errors.house_number !== undefined} className="w-100 mt-1">
+                                        <TextField error={errors.house_number !== undefined} type="number" className="w-100" id="house_number" name="house_number" label="Numero exterior" variant="outlined" onChange={handleChange} size="small"/>
+                                        <FormHelperText>{errors.house_number}</FormHelperText>
                                     </FormControl>
                                 </div>
                             </div>
@@ -357,7 +357,7 @@ export const Reserve = () => {
                         </div>
                     </div>
                 </div>
-                <Snackbar open={openSnackbar} autoHideDuration={1800} onClose={() => {setOpenSnackbar(false); navigate(0);}}>
+                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}} open={openSnackbar} autoHideDuration={1800} onClose={() => {setOpenSnackbar(false); navigate(0);}}>
                     <Alert severity={alert.type} sx={{ width: '100%' }}>
                         {
                             alert.message
@@ -369,4 +369,3 @@ export const Reserve = () => {
     );
 
 }
-//

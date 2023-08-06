@@ -13,18 +13,39 @@ import SchoolIcon from '@mui/icons-material/School';
 import ArticleIcon from '@mui/icons-material/Article';
 import LoginIcon from '@mui/icons-material/Login';
 import { Link } from 'react-router-dom';
+import { CreditCard } from '@mui/icons-material';
+import { InstallMobile } from '@mui/icons-material';
+import { useState } from 'react';
+import { Snackbar, Alert } from '@mui/material';
 
 export const STEDrawer = () => {
-    const icons = {
-        home: <CottageIcon/>,
-
-    }
+    const [loading, setLoading] = useState(false);
+    const downloadApp = async () => {
+        setLoading(true);
+        await fetch('https://api-ste.smartte.com.mx/ste-files/ste-estudiantil.apk')
+        .then(response => response.blob())
+        .then((blob) => {
+            let blobUrl = window.URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = 'STEApp';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setLoading(false);
+        })
+        .catch(err => {
+            setLoading(false);
+            console.log(err)
+        });
+    
+      }
 
     const items = [
         {
             name: 'Inicio',
             icon: <CottageIcon/>,
-            to: '/'
+            to: '/home'
         },
         {
             name: 'Escuelas',
@@ -34,13 +55,18 @@ export const STEDrawer = () => {
         {
             name: 'Reservar',
             icon: <ArticleIcon/>,
-            to: '/reserve-form'
+            to: '/reservation'
         },
+        {
+            name: 'Formato de pago',
+            icon: <CreditCard/>,
+            to: '/payment'
+        }/*,
         {
             name: 'Iniciar Sesión',
             icon: <LoginIcon/>,
             to: '/login'
-        }
+        }*/
     ];
 
     const [state, setState] = React.useState({
@@ -73,6 +99,14 @@ export const STEDrawer = () => {
                 </ListItemButton>
               </ListItem>
             ))}
+            <ListItem disablePadding>
+                <ListItemButton onClick={downloadApp}>
+                  <ListItemIcon>
+                    <InstallMobile />
+                  </ListItemIcon>
+                  <ListItemText primary='Descargar aplicación' />
+                </ListItemButton>
+              </ListItem>
           </List>
         </Box>
     );
@@ -86,6 +120,11 @@ export const STEDrawer = () => {
             >
                 {list('left')}
             </Drawer>
+            <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}} open={loading} >
+                <Alert severity='success' sx={{ width: '100%' }}>
+                    Descargando aplicación...
+                </Alert>
+            </Snackbar>
         </div>
     );
 }

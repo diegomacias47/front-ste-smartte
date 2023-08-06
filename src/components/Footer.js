@@ -9,7 +9,7 @@ const footerStyles = {
 
 export const Footer = () => {
     return (
-        <footer className="py-5 bg-light border-top">
+        <footer className="py-5 bg-light border-top border-bottom">
             <div className="container">
                 <h2 className="fw-bolder size-24 text-center pb-3 border-bottom">STE Transporte Estudiantil</h2>
                 <div className="row my-4">
@@ -18,7 +18,7 @@ export const Footer = () => {
                             <div>
                                 <ul style={footerStyles.list}>
                                     <li><span className="size-14"><b>Facebook: </b><a href="https://www.facebook.com/profile.php?id=100092481503701" target="_blank" className="text-decoration-underline text-black">STE Transporte Estudiantil</a></span></li>
-                                    <li><span className="size-14"><b>WhatsApp: </b><span className="text-decoration-underline">81-3084-5732</span></span></li>
+                                    <li><span className="size-14"><b>WhatsApp: </b><span className="text-decoration-underline">81-1887-4614</span></span></li>
                                     <li><span className="size-14"><b>Correo: </b> <span className="text-decoration-underline ">contacto@smartte.com.mx</span></span></li>
                                 </ul>
                             </div>
