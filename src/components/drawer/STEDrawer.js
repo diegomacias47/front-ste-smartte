@@ -12,6 +12,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 import SchoolIcon from '@mui/icons-material/School';
 import ArticleIcon from '@mui/icons-material/Article';
 import LoginIcon from '@mui/icons-material/Login';
+import PaidIcon from '@mui/icons-material/Paid';
 import { Link } from 'react-router-dom';
 import { CreditCard } from '@mui/icons-material';
 import { InstallMobile } from '@mui/icons-material';
@@ -61,6 +62,11 @@ export const STEDrawer = () => {
             name: 'Formato de pago',
             icon: <CreditCard/>,
             to: '/payment'
+        },
+        {
+            name: 'Reembolsos',
+            icon: <PaidIcon/>,
+            to: '/refund'
         }/*,
         {
             name: 'Iniciar Sesión',

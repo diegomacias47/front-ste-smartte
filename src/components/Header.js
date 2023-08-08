@@ -59,6 +59,7 @@ export const Header = () => {
             <button className={`text-capitalize d-none d-lg-inline-flex ste-btn ste-btn-sm ste-btn-outlined-primary ${location.pathname === '/reservation' ? 'active' : ''}`} onClick={() => goTo('/reservation')}>Reservar</button>
             <button className={`text-capitalize d-none d-lg-inline-flex ste-btn ste-btn-sm ste-btn-outlined-primary ${location.pathname === '/payment' ? 'active' : ''}`} onClick={() => goTo('/payment')}>Formato pago</button>
             <button className={`text-capitalize d-none d-lg-inline-flex ste-btn ste-btn-sm ste-btn-outlined-primary ${location.pathname === '/qr' ? 'active' : ''}`} onClick={() => goTo('/qr')}>Generar QR</button>
+            <button className={`text-capitalize d-none d-lg-inline-flex ste-btn ste-btn-sm ste-btn-outlined-primary ${location.pathname === '/refund' ? 'active' : ''}`} onClick={() => goTo('/refund')}>Reembolsos</button>
           </div>
           <div className='d-flex align-items-center'>
             <button className='text-capitalize d-none d-lg-inline-flex ste-btn ste-btn-sm ste-btn-primary' onClick={downloadApp}>

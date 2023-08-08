@@ -9,6 +9,7 @@ import { Reserve } from "../pages/reserve-form/Reserve";
 import { Account } from "../pages/account/Account";
 import { Payment } from "../pages/payment/Payment";
 import { QRGenerator } from "../pages/qr-generator/QRGenerator";
+import { Refund } from "../pages/refund/Refund";
 
 export const RoutesIndex = () => {
     return (
@@ -21,6 +22,7 @@ export const RoutesIndex = () => {
                 <Route path='/reservation' element={<Reserve />} ></Route>
                 <Route path='/payment' element={<Payment />} ></Route>
                 <Route path='/qr' element={<QRGenerator />} ></Route>
+                <Route path='/refund' element={<Refund />} ></Route>
             </Route>
             <Route element={<ProtectedRoute />}>
                 <Route path='/account' element={<Account />} ></Route>
